@@ -1,5 +1,7 @@
 # Third party visualization test
 
+<img src="assets/screenshot.png" />
+
 ## Instructions
 
 1. Clone the repository, install the dependencies and run the app:
