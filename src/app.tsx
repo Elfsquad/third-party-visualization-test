@@ -58,16 +58,14 @@ function App() {
   const [updateRequirementIsSelection, setUpdateRequirementIsSelection] = useState(null);
 
   const updateRequirement = () => {
-    postMessage('elfsquad.updateRequirement', {
-      name: 'elfsquad.updateRequirement',
-      args: {
-        nodeId: updateRequirementNodeId,
-        value: updateRequirementValue,
-        isSelection: updateRequirementIsSelection,
-        ignoreConflicts: true,
-        includeSearchbarResults: true,
-      }
-    });
+    const obj = {
+      nodeId: updateRequirementNodeId,
+      value: updateRequirementValue,
+      isSelection: updateRequirementIsSelection,
+      ignoreConflicts: true,
+      includeSearchbarResults: true,
+    };
+    postMessage('elfsquad.updateRequirement', obj);
   }
 
   const [updateRequirementsNodeId, setUpdateRequirementsNodeId] = useState(null);
@@ -75,18 +73,16 @@ function App() {
   const [updateRequirementsIsSelection, setUpdateRequirementsIsSelection] = useState(null);
 
   const updateRequirements = () => {
-    postMessage('elfsquad.updateRequirements', {
-      name: 'elfsquad.updateRequirements',
-      args: {
-        requirements: [{
-          nodeId: updateRequirementsNodeId,
-          value: updateRequirementsValue,
-          isSelection: updateRequirementsIsSelection
-        }],
-        ignoreConflicts: true,
-        includeSearchbarResults: true,
-      }
-    });
+    const obj = {
+      requirements: [{
+        nodeId: updateRequirementsNodeId,
+        value: updateRequirementsValue,
+        isSelection: updateRequirementsIsSelection
+      }],
+      ignoreConflicts: true,
+      includeSearchbarResults: true,
+    }
+    postMessage('elfsquad.updateRequirements', obj);
   }
 
   const selectableImageNodes = useMemo(() => {
@@ -101,13 +97,14 @@ function App() {
   const [updateImageImageBase64, setUpdateImageImageBase64] = useState(null);
 
   const updateImageValue = () => {
-    postMessage('elfsquad.updateImageValue', {
+    const obj = {
       name: 'elfsquad.updateImageValue',
       args: {
         nodeId: updateImageValueNodeId,
         image: updateImageImageBase64,
       }
-    });
+    };
+    postMessage('elfsquad.updateImageValue', obj);
   }
 
   return <div className="flex p-4 gap-16">
