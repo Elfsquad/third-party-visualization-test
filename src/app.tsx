@@ -96,13 +96,11 @@ function App() {
   const [updateImageValueNodeId, setUpdateImageValueNodeId] = useState(null);
   const [updateImageImageBase64, setUpdateImageImageBase64] = useState(null);
 
+
   const updateImageValue = () => {
     const obj = {
-      name: 'elfsquad.updateImageValue',
-      args: {
-        nodeId: updateImageValueNodeId,
-        image: updateImageImageBase64,
-      }
+      nodeId: updateImageValueNodeId,
+      image: updateImageImageBase64,
     };
     postMessage('elfsquad.updateImageValue', obj);
   }
