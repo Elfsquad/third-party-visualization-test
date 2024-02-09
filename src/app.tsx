@@ -85,6 +85,17 @@ function App() {
     postMessage('elfsquad.updateRequirements', obj);
   }
 
+  const [updateTextValueNodeId, setUpdateTextValueNodeId] = useState(null);
+  const [updateTextValueTextValue, setUpdateTextValueTextValue] = useState(null);
+
+  const updateTextValue = () => {
+    const obj = {
+      nodeId: updateTextValueNodeId,
+      textValue: updateTextValueTextValue,
+    };
+    postMessage('elfsquad.updateTextValue', obj);
+  };
+
   const selectableImageNodes = useMemo(() => {
     if (!selectableNodes) {
       return [];
@@ -133,6 +144,25 @@ function App() {
           </div>
         </div>
       </div>
+
+      <div className="flex flex-col gap-4 bg-gray-200 p-4">
+        {triggerHeader('elfsquad.updateTextValue', updateTextValue)}
+        <div>
+          <div className="flex justify-between gap-16">
+            <label>Node: </label>
+            <select className="w-full" onChange={(event) => setUpdateTextValueNodeId(event.target.value)}>
+              <option value="">Select a node</option>
+              {selectableNodes && selectableNodes.map((node) => <option value={node.id}>{node.name}</option>)}
+            </select>
+          </div>
+
+          <div className="flex justify-between gap-16">
+            <label>Text value: </label>
+            <input className="w-full" onChange={(event) => setUpdateTextValueTextValue(event.target.value)} />
+          </div>
+        </div>
+      </div>
+
       <div className="flex flex-col gap-4 bg-gray-200 p-4">
         {triggerHeader('elfsquad.updateRequirements', updateRequirements)}
         <div>
