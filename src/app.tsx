@@ -11,6 +11,7 @@ function App() {
     window.addEventListener('message', (event) => {
       setMessages((messages) => [event.data, ...messages]);
       if (event.data && event.data.name === 'elfsquad.configurationUpdated') {
+        console.log('Configuration updated', event.data.args);
         setConfiguration(event.data.args);
       }
     });
